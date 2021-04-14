@@ -10,18 +10,21 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var orderPrice: String = ""
-    @State private var numberOfPeople = 2
+    @State private var numberOfPeople = ""
     @State private var tipCountIndex = 2
     
     private let tipPercents = [10, 15, 20, 25, 0]
     
-    private var calculatedPrace: Double {
-        let percentOfTips = tipPercents[tipCountIndex]
-        let people = Double(numberOfPeople + 2)
+    private var amount: Double {
         let price = Double(orderPrice) ?? 0
-        let tips = price / 100 * Double(percentOfTips)
-        let amountPerPerson = (tips + price) / people
-        return amountPerPerson
+        let percentOfTips = Double(tipPercents[tipCountIndex])
+        let tips = price / 100 * percentOfTips
+        return tips + price
+    }
+    
+    private var amountPerPerson: Double {
+        let people = Double(numberOfPeople) ?? 0
+        return amount / people
     }
     
     var body: some View {
@@ -30,11 +33,8 @@ struct ContentView: View {
                 Section {
                     TextField("Amount", text: $orderPrice)
                         .keyboardType(.numberPad)
-                    Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach(numberOfPeople..<100) {
-                            Text("\($0) people")
-                        }
-                    }
+                    TextField("Number of people", text: $numberOfPeople)
+                        .keyboardType(.numberPad)
                 }
                 
                 Section(header: Text("How much tip do you want to live?")) {
@@ -45,10 +45,17 @@ struct ContentView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
+                .textCase(.none)
                 
-                Section {
-                    Text("$\(String(format: "%.2f", calculatedPrace))")
+                Section(header: Text("Total amount")) {
+                    Text("$\(String(format: "%.2f", amount))")
                 }
+                .textCase(.none)
+                
+                Section(header: Text("Amount per person")) {
+                    Text("$\(String(format: "%.2f", amountPerPerson))")
+                }
+                .textCase(.none)
             }
             .navigationBarTitle("WeSplit")
         }
