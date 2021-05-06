@@ -14,7 +14,9 @@ struct ContentView: View {
                                     "UK", "US"].shuffled()
     @State private var answerIndex = Int.random(in: 0...2)
     @State private var isDisplayScore = false
+    @State private var score = 0
     @State private var title = ""
+    @State private var selectedIndex = 0
     
     var body: some View {
         ZStack {
@@ -22,12 +24,23 @@ struct ContentView: View {
                            startPoint: .top,
                            endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
+
             VStack {
+                HStack {
+                    Spacer()
+                    Text("Score: \(score)")
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding([.trailing, .bottom])
+                }
+                
                 Group {
                     Text("Tap the flag of")
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .padding(.top)
                     Text(countries[answerIndex])
                         .foregroundColor(.white)
                         .font(.largeTitle)
@@ -47,11 +60,12 @@ struct ContentView: View {
                         .padding()
                     }
                 }
+                Spacer()
             }
         }
         .alert(isPresented: $isDisplayScore) {
             Alert(title: Text(title),
-                  message: Text("Your score is"),
+                  message: Text("This is the flag of \(countries[selectedIndex])"),
                   dismissButton: .default(Text("Continue"), action: {
                     shuffleCountries()
                   }))
@@ -59,8 +73,16 @@ struct ContentView: View {
     }
     
     private func didTapFlag(with index: Int) {
-        title = index == answerIndex ? "Correct" : "Wrong"
-        isDisplayScore.toggle()
+        selectedIndex = index
+        if index == answerIndex {
+            title = "Correct"
+            score += 1
+            shuffleCountries()
+        } else {
+            title = "Wrong"
+            score -= 1
+            isDisplayScore.toggle()
+        }
     }
     
     private func shuffleCountries() {
