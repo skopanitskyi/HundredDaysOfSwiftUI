@@ -49,6 +49,7 @@ struct ContentView: View {
                 
                 Section(header: Text("Total amount")) {
                     Text("$\(String(format: "%.2f", amount))")
+                        .foregroundColor(tipPercents[tipCountIndex] == 0 ? .red : .black)
                 }
                 .textCase(.none)
                 
