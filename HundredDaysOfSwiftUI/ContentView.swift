@@ -20,7 +20,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.black]),
+            LinearGradient(gradient: Gradient(colors: [.blue, .white]),
                            startPoint: .top,
                            endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
@@ -52,10 +52,9 @@ struct ContentView: View {
                         Button(action: {
                             didTapFlag(with: index)
                         }, label: {
-                            Image(countries[index])
-                                .clipShape(Capsule())
-                                .overlay(Capsule().stroke(Color.black, lineWidth: 1.0))
-                                .shadow(color: .black, radius: 10)
+                            FlagImage(name: countries[index],
+                                      overlayLineWidth: 2.5,
+                                      shadowRadius: 10)
                         })
                         .padding()
                     }
