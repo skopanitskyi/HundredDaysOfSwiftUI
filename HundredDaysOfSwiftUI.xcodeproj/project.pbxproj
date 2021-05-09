@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B38A50F26487045008BAE71 /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38A50E26487045008BAE71 /* BackgroundGradientView.swift */; };
 		5B8F6134261398E300C7AE15 /* HundredDaysOfSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F6133261398E300C7AE15 /* HundredDaysOfSwiftUIApp.swift */; };
 		5B8F6136261398E300C7AE15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F6135261398E300C7AE15 /* ContentView.swift */; };
 		5B8F6138261398E600C7AE15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8F6137261398E600C7AE15 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B38A50E26487045008BAE71 /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
 		5B8F6130261398E300C7AE15 /* HundredDaysOfSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HundredDaysOfSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8F6133261398E300C7AE15 /* HundredDaysOfSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredDaysOfSwiftUIApp.swift; sourceTree = "<group>"; };
 		5B8F6135261398E300C7AE15 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				5B8F6133261398E300C7AE15 /* HundredDaysOfSwiftUIApp.swift */,
 				5B8F6135261398E300C7AE15 /* ContentView.swift */,
+				5B38A50E26487045008BAE71 /* BackgroundGradientView.swift */,
 				5B8F6137261398E600C7AE15 /* Assets.xcassets */,
 				5B8F613C261398E600C7AE15 /* Info.plist */,
 				5B8F6139261398E600C7AE15 /* Preview Content */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B38A50F26487045008BAE71 /* BackgroundGradientView.swift in Sources */,
 				5B8F6136261398E300C7AE15 /* ContentView.swift in Sources */,
 				5B8F6134261398E300C7AE15 /* HundredDaysOfSwiftUIApp.swift in Sources */,
 			);
